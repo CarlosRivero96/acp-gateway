@@ -1,0 +1,34 @@
+{
+  "name": "Seniority",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "SeniorityName",
+      "fieldValues": "JR,JRADV,SSR,SSRADV,SR,SD,ARCH",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "careerProfile",
+      "otherEntityRelationshipName": "seniority",
+      "relationshipValidateRules": "required",
+      "relationshipName": "careerProfile",
+      "otherEntityField": "name"
+    }
+  ],
+  "entityTableName": "seniority",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "microserviceName": "api",
+  "clientRootFolder": "api",
+  "databaseType": "sql",
+  "changelogDate": "20211014163858"
+}

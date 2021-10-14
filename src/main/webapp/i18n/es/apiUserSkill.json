@@ -1,0 +1,30 @@
+{
+  "gatewayApp": {
+    "apiUserSkill": {
+      "home": {
+        "title": "User Skills",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo User Skill",
+        "createOrEditLabel": "Crear o editar User Skill",
+        "notFound": "Ningún User Skills encontrado"
+      },
+      "delete": {
+        "question": "¿Seguro que quiere eliminar User Skill {{ id }}?"
+      },
+      "detail": {
+        "title": "User Skill"
+      },
+      "id": "ID",
+      "level": "Level",
+      "user": "User",
+      "skill": "Skill"
+    }
+  },
+  "apiApp": {
+    "apiUserSkill": {
+      "created": "Un nuevo User Skill ha sido creado con el identificador {{ param }}",
+      "updated": "Un User Skill ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un User Skill ha sido eliminado con el identificador {{ param }}"
+    }
+  }
+}

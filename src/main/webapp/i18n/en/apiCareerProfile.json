@@ -1,0 +1,29 @@
+{
+  "gatewayApp": {
+    "apiCareerProfile": {
+      "home": {
+        "title": "Career Profiles",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Career Profile",
+        "createOrEditLabel": "Create or edit a Career Profile",
+        "notFound": "No Career Profiles found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Career Profile {{ id }}?"
+      },
+      "detail": {
+        "title": "Career Profile"
+      },
+      "id": "ID",
+      "name": "Name",
+      "description": "Description"
+    }
+  },
+  "apiApp": {
+    "apiCareerProfile": {
+      "created": "A new Career Profile is created with identifier {{ param }}",
+      "updated": "A Career Profile is updated with identifier {{ param }}",
+      "deleted": "A Career Profile is deleted with identifier {{ param }}"
+    }
+  }
+}

@@ -7,6 +7,15 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entities",
+        "apiUserData": "User Data",
+        "apiCareerProfile": "Career Profile",
+        "apiSeniority": "Seniority",
+        "apiMission": "Mission",
+        "apiSkill": "Skill",
+        "apiCategory": "Category",
+        "apiUserMission": "User Mission",
+        "apiUserSkill": "User Skill",
+        "apiSeniorityRequirement": "Seniority Requirement",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {
