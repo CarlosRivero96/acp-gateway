@@ -1,0 +1,29 @@
+{
+  "gatewayApp": {
+    "apiSeniority": {
+      "home": {
+        "title": "Seniorities",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Seniority",
+        "createOrEditLabel": "Crear o editar Seniority",
+        "notFound": "Ningún Seniorities encontrado"
+      },
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Seniority {{ id }}?"
+      },
+      "detail": {
+        "title": "Seniority"
+      },
+      "id": "ID",
+      "name": "Name",
+      "careerProfile": "Career Profile"
+    }
+  },
+  "apiApp": {
+    "apiSeniority": {
+      "created": "Un nuevo Seniority ha sido creado con el identificador {{ param }}",
+      "updated": "Un Seniority ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Seniority ha sido eliminado con el identificador {{ param }}"
+    }
+  }
+}

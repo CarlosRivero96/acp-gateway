@@ -1,0 +1,49 @@
+{
+  "name": "UserData",
+  "fields": [
+    {
+      "fieldName": "login",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "unique"]
+    },
+    {
+      "fieldName": "firstName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "birthdate",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "careerProfile",
+      "otherEntityRelationshipName": "userData",
+      "relationshipName": "careerProfile",
+      "otherEntityField": "name"
+    }
+  ],
+  "entityTableName": "user_data",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "microserviceName": "api",
+  "clientRootFolder": "api",
+  "databaseType": "sql",
+  "changelogDate": "20211014163856"
+}

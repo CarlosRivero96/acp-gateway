@@ -1,0 +1,39 @@
+{
+  "name": "UserMission",
+  "fields": [
+    {
+      "fieldName": "completed",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "userData",
+      "otherEntityRelationshipName": "userMission",
+      "relationshipValidateRules": "required",
+      "relationshipName": "user"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "mission",
+      "otherEntityRelationshipName": "userMission",
+      "relationshipValidateRules": "required",
+      "relationshipName": "mission"
+    }
+  ],
+  "entityTableName": "user_mission",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "microserviceName": "api",
+  "clientRootFolder": "api",
+  "databaseType": "sql",
+  "changelogDate": "20211014163902"
+}

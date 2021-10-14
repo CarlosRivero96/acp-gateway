@@ -28,13 +28,17 @@ export const RegisterPage = (props: RouteComponentProps<any>) => {
   const updatePassword = event => setPassword(event.target.value);
 
   const successMessage = useAppSelector(state => state.register.successMessage);
+  const registrationSuccess = useAppSelector(state => state.register.registrationSuccess);
 
   useEffect(() => {
     if (successMessage) {
       toast.success(translate(successMessage));
-      props.history.push('/login');
     }
   }, [successMessage]);
+
+  useEffect(() => {
+    registrationSuccess && props.history.push('/login');
+  }, [registrationSuccess]);
 
   return (
     <div>

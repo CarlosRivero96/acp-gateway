@@ -1,0 +1,42 @@
+{
+  "name": "SeniorityRequirement",
+  "fields": [
+    {
+      "fieldName": "level",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "skill",
+      "otherEntityRelationshipName": "seniorityRequirement",
+      "relationshipValidateRules": "required",
+      "relationshipName": "skill",
+      "otherEntityField": "name",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "seniority",
+      "otherEntityRelationshipName": "seniorityRequirement",
+      "relationshipValidateRules": "required",
+      "relationshipName": "seniority",
+      "otherEntityField": "name"
+    }
+  ],
+  "entityTableName": "seniority_requirement",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "microserviceName": "api",
+  "clientRootFolder": "api",
+  "databaseType": "sql",
+  "changelogDate": "20211014163904"
+}
