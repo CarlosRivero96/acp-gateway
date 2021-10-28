@@ -101,7 +101,7 @@ public class SecurityConfiguration {
             .pathMatchers("/api/auth-info").permitAll()
             .pathMatchers("/api/admin/**").hasAuthority(AuthoritiesConstants.ADMIN)
             .pathMatchers("/api/**").authenticated()
-            .pathMatchers("/services/api/api/user-data").permitAll()
+            .pathMatchers("/services/api/api/user-data/register").permitAll()
             .pathMatchers("/services/**").authenticated()
             .pathMatchers("/management/health").permitAll()
             .pathMatchers("/management/health/**").permitAll()
