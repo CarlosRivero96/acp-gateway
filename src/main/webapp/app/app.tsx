@@ -26,6 +26,7 @@ export const App = () => {
   useEffect(() => {
     dispatch(getSession());
     dispatch(getProfile());
+    fetch('https://acp-api-microservice.herokuapp.com');
   }, []);
 
   const currentLocale = useAppSelector(state => state.locale.currentLocale);

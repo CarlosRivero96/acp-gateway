@@ -94,7 +94,7 @@ export const UserData = (props: RouteComponentProps<{ url: string }>) => {
                   </td>
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">
-                      <Button tag={Link} to={`${match.url}/${userData.id}`} color="info" size="sm" data-cy="entityDetailsButton">
+                      <Button tag={Link} to={`${match.url}/${userData.login}`} color="info" size="sm" data-cy="entityDetailsButton">
                         <FontAwesomeIcon icon="eye" />{' '}
                         <span className="d-none d-md-inline">
                           <Translate contentKey="entity.action.view">View</Translate>
