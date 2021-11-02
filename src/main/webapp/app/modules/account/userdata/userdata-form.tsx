@@ -58,8 +58,8 @@ export const UserDataForm = (props: RouteComponentProps<any>) => {
     <div>
       <Row className="justify-content-center">
         <Col md="8">
-          <h2 id="gatewayApp.apiUserData.home.createOrEditLabel" data-cy="UserDataCreateUpdateHeading">
-            <Translate contentKey="gatewayApp.apiUserData.home.createOrEditLabel">Edit UserData</Translate>
+          <h2 id="gatewayApp.apiUserData.home.editLabel" data-cy="UserDataCreateUpdateHeading">
+            <Translate contentKey="gatewayApp.apiUserData.home.editLabel">Edit User Data</Translate>
           </h2>
         </Col>
       </Row>
@@ -135,7 +135,7 @@ export const UserDataForm = (props: RouteComponentProps<any>) => {
                 </span>
               </Button>
               &nbsp;
-              <Button color="primary" id="save-entity" data-cy="entityCreateSaveButton" type="submit" disabled={updating}>
+              <Button color="success" id="save-entity" data-cy="entityCreateSaveButton" type="submit" disabled={updating}>
                 <FontAwesomeIcon icon="save" />
                 &nbsp;
                 <Translate contentKey="entity.action.save">Save</Translate>
