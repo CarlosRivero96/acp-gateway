@@ -17,6 +17,7 @@ import { hasAnyAuthority } from 'app/shared/auth/private-route';
 import ErrorBoundary from 'app/shared/error/error-boundary';
 import { AUTHORITIES } from 'app/config/constants';
 import AppRoutes from 'app/routes';
+import axios from 'axios';
 
 const baseHref = document.querySelector('base').getAttribute('href').replace(/\/$/, '');
 
@@ -26,7 +27,7 @@ export const App = () => {
   useEffect(() => {
     dispatch(getSession());
     dispatch(getProfile());
-    fetch('https://acp-api-microservice.herokuapp.com');
+    axios.get('https://acp-api-microservice.herokuapp.com');
   }, []);
 
   const currentLocale = useAppSelector(state => state.locale.currentLocale);
