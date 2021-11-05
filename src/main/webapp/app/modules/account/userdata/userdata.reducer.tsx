@@ -18,26 +18,11 @@ const apiUrl = 'services/api/api/user-data';
 
 // Actions
 
-export const getEntities = createAsyncThunk('userData/fetch_entity_list', async ({ page, size, sort }: IQueryParams) => {
-  const requestUrl = `${apiUrl}?cacheBuster=${new Date().getTime()}`;
-  return axios.get<IUserData[]>(requestUrl);
-});
-
 export const getEntity = createAsyncThunk(
   'userData/fetch_entity',
-  async (id: string | number) => {
-    const requestUrl = `${apiUrl}/${id}`;
+  async (login: string) => {
+    const requestUrl = `${apiUrl}/${login}`;
     return axios.get<IUserData>(requestUrl);
-  },
-  { serializeError: serializeAxiosError }
-);
-
-export const createEntity = createAsyncThunk(
-  'userData/create_entity',
-  async (entity: IUserData, thunkAPI) => {
-    const result = await axios.post<IUserData>(`${apiUrl}/register`, cleanEntity(entity));
-    thunkAPI.dispatch(getEntities({}));
-    return result;
   },
   { serializeError: serializeAxiosError }
 );
@@ -46,7 +31,6 @@ export const updateEntity = createAsyncThunk(
   'userData/update_entity',
   async (entity: IUserData, thunkAPI) => {
     const result = await axios.put<IUserData>(`${apiUrl}/${entity.id}`, cleanEntity(entity));
-    thunkAPI.dispatch(getEntities({}));
     return result;
   },
   { serializeError: serializeAxiosError }
@@ -56,18 +40,6 @@ export const partialUpdateEntity = createAsyncThunk(
   'userData/partial_update_entity',
   async (entity: IUserData, thunkAPI) => {
     const result = await axios.patch<IUserData>(`${apiUrl}/${entity.id}`, cleanEntity(entity));
-    thunkAPI.dispatch(getEntities({}));
-    return result;
-  },
-  { serializeError: serializeAxiosError }
-);
-
-export const deleteEntity = createAsyncThunk(
-  'userData/delete_entity',
-  async (id: string | number, thunkAPI) => {
-    const requestUrl = `${apiUrl}/${id}`;
-    const result = await axios.delete<IUserData>(requestUrl);
-    thunkAPI.dispatch(getEntities({}));
     return result;
   },
   { serializeError: serializeAxiosError }
@@ -84,30 +56,18 @@ export const UserDataSlice = createEntitySlice({
         state.loading = false;
         state.entity = action.payload.data;
       })
-      .addCase(deleteEntity.fulfilled, state => {
-        state.updating = false;
-        state.updateSuccess = true;
-        state.entity = {};
-      })
-      .addMatcher(isFulfilled(getEntities), (state, action) => {
-        return {
-          ...state,
-          loading: false,
-          entities: action.payload.data,
-        };
-      })
-      .addMatcher(isFulfilled(createEntity, updateEntity, partialUpdateEntity), (state, action) => {
+      .addMatcher(isFulfilled(updateEntity, partialUpdateEntity), (state, action) => {
         state.updating = false;
         state.loading = false;
         state.updateSuccess = true;
         state.entity = action.payload.data;
       })
-      .addMatcher(isPending(getEntities, getEntity), state => {
+      .addMatcher(isPending(getEntity), state => {
         state.errorMessage = null;
         state.updateSuccess = false;
         state.loading = true;
       })
-      .addMatcher(isPending(createEntity, updateEntity, partialUpdateEntity, deleteEntity), state => {
+      .addMatcher(isPending(updateEntity, partialUpdateEntity), state => {
         state.errorMessage = null;
         state.updateSuccess = false;
         state.updating = true;

@@ -6,6 +6,7 @@
         "refreshListLabel": "Refresh list",
         "createLabel": "Create a new User Data",
         "createOrEditLabel": "Create or edit a User Data",
+        "editLabel": "Edit User Data",
         "notFound": "No User Data found"
       },
       "delete": {
@@ -26,7 +27,7 @@
   "apiApp": {
     "apiUserData": {
       "created": "A new User Data is created with identifier {{ param }}",
-      "updated": "A User Data is updated with identifier {{ param }}",
+      "updated": "User Data updated",
       "deleted": "A User Data is deleted with identifier {{ param }}"
     }
   }
