@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { ICareerProfile } from 'app/shared/model/api/career-profile.model';
 import { getEntities as getCareerProfiles } from 'app/entities/api/career-profile/career-profile.reducer';
-import { getEntity, updateEntity, reset } from './userdata.reducer';
+import { getEntity, updateEntity, reset } from 'app/entities/api/user-data/user-data.reducer';
 import { IUserData } from 'app/shared/model/api/user-data.model';
 import { convertDateTimeFromServer, convertDateTimeToServer, displayDefaultDateTime } from 'app/shared/util/date-utils';
 import { mapIdList } from 'app/shared/util/entity-utils';
