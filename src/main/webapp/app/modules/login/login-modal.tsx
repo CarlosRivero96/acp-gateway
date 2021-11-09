@@ -3,6 +3,8 @@ import { Translate, translate, ValidatedField } from 'react-jhipster';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Alert, Row, Col, Form } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { GoogleLoginButton } from 'app/shared/components/google-login/google-login.component';
+import { divide } from 'lodash';
 
 export interface ILoginModalProps {
   showModal: boolean;
@@ -77,11 +79,16 @@ const LoginModal = (props: ILoginModalProps) => {
             </Col>
           </Row>
           <div className="mt-1">&nbsp;</div>
-          {/*           <Alert color="warning"> */}
-          {/*             <Link to="/account/reset/request" data-cy="forgetYourPasswordSelector"> */}
-          {/*               <Translate contentKey="login.password.forgot">Did you forget your password?</Translate> */}
-          {/*             </Link> */}
-          {/*           </Alert> */}
+          <Button color="secondary" onClick={handleClose} tabIndex={1} size="md">
+            <Translate contentKey="entity.action.cancel">Cancel</Translate>
+          </Button>{' '}
+          <Button color="primary" type="submit" data-cy="submit" size="md">
+            <Translate contentKey="login.form.button">Sign in</Translate>
+          </Button>
+          <div className="mt-1">&nbsp;</div>
+          <GoogleLoginButton />
+        </ModalBody>
+        <ModalFooter>
           <Alert color="warning">
             <span>
               <Translate contentKey="global.messages.info.register.noaccount">You don&apos;t have an account yet?</Translate>
@@ -90,14 +97,6 @@ const LoginModal = (props: ILoginModalProps) => {
               <Translate contentKey="global.messages.info.register.link">Register a new account</Translate>
             </Link>
           </Alert>
-        </ModalBody>
-        <ModalFooter>
-          <Button color="secondary" onClick={handleClose} tabIndex={1}>
-            <Translate contentKey="entity.action.cancel">Cancel</Translate>
-          </Button>{' '}
-          <Button color="primary" type="submit" data-cy="submit">
-            <Translate contentKey="login.form.button">Sign in</Translate>
-          </Button>
         </ModalFooter>
       </Form>
     </Modal>

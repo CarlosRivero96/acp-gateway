@@ -82,6 +82,7 @@
     "path-browserify": "1.0.1",
     "react": "17.0.1",
     "react-dom": "17.0.1",
+    "react-google-login": "5.2.2",
     "react-hook-form": "7.15.3",
     "react-jhipster": "0.16.2",
     "react-loadable": "5.5.0",
