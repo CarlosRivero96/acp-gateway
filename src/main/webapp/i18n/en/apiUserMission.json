@@ -1,0 +1,30 @@
+{
+  "gatewayApp": {
+    "apiUserMission": {
+      "home": {
+        "title": "User Missions",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new User Mission",
+        "createOrEditLabel": "Create or edit a User Mission",
+        "notFound": "No User Missions found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete User Mission {{ id }}?"
+      },
+      "detail": {
+        "title": "User Mission"
+      },
+      "id": "ID",
+      "completed": "Completed",
+      "user": "User",
+      "mission": "Mission"
+    }
+  },
+  "apiApp": {
+    "apiUserMission": {
+      "created": "A new User Mission is created with identifier {{ param }}",
+      "updated": "A User Mission is updated with identifier {{ param }}",
+      "deleted": "A User Mission is deleted with identifier {{ param }}"
+    }
+  }
+}

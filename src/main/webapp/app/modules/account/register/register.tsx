@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Redirect, RouteComponentProps } from 'react-router-dom';
 import { Translate, translate, ValidatedField, ValidatedForm, isEmail } from 'react-jhipster';
 import { Row, Col, Alert, Button } from 'reactstrap';
 import { toast } from 'react-toastify';
@@ -7,7 +8,7 @@ import PasswordStrengthBar from 'app/shared/layout/password/password-strength-ba
 import { useAppDispatch, useAppSelector } from 'app/config/store';
 import { handleRegister, reset } from './register.reducer';
 
-export const RegisterPage = () => {
+export const RegisterPage = (props: RouteComponentProps<any>) => {
   const [password, setPassword] = useState('');
   const dispatch = useAppDispatch();
 
@@ -20,19 +21,24 @@ export const RegisterPage = () => {
 
   const currentLocale = useAppSelector(state => state.locale.currentLocale);
 
-  const handleValidSubmit = ({ username, email, firstPassword }) => {
-    dispatch(handleRegister({ login: username, email, password: firstPassword, langKey: currentLocale }));
+  const handleValidSubmit = ({ username, firstName, lastName, email, firstPassword }) => {
+    dispatch(handleRegister({ login: username, firstName, lastName, email, password: firstPassword, langKey: currentLocale }));
   };
 
   const updatePassword = event => setPassword(event.target.value);
 
   const successMessage = useAppSelector(state => state.register.successMessage);
+  const registrationSuccess = useAppSelector(state => state.register.registrationSuccess);
 
   useEffect(() => {
     if (successMessage) {
       toast.success(translate(successMessage));
     }
   }, [successMessage]);
+
+  useEffect(() => {
+    registrationSuccess && props.history.push('/login');
+  }, [registrationSuccess]);
 
   return (
     <div>
@@ -60,6 +66,28 @@ export const RegisterPage = () => {
                 maxLength: { value: 50, message: translate('register.messages.validate.login.maxlength') },
               }}
               data-cy="username"
+            />
+            <ValidatedField
+              name="firstName"
+              label={translate('settings.form.firstname')}
+              placeholder={translate('settings.form.firstname.placeholder')}
+              validate={{
+                required: { value: true, message: translate('settings.messages.validate.firstname.required') },
+                minLength: { value: 1, message: translate('settings.messages.validate.firstname.minlength') },
+                maxLength: { value: 50, message: translate('settings.messages.validate.firstname.maxlength') },
+              }}
+              data-cy="firstName"
+            />
+            <ValidatedField
+              name="lastName"
+              label={translate('settings.form.lastname')}
+              placeholder={translate('settings.form.lastname.placeholder')}
+              validate={{
+                required: { value: true, message: translate('settings.messages.validate.lastname.required') },
+                minLength: { value: 1, message: translate('settings.messages.validate.lastname.minlength') },
+                maxLength: { value: 50, message: translate('settings.messages.validate.lastname.maxlength') },
+              }}
+              data-cy="lastName"
             />
             <ValidatedField
               name="email"
@@ -105,22 +133,6 @@ export const RegisterPage = () => {
               <Translate contentKey="register.form.button">Register</Translate>
             </Button>
           </ValidatedForm>
-          <p>&nbsp;</p>
-          <Alert color="warning">
-            <span>
-              <Translate contentKey="global.messages.info.authenticated.prefix">If you want to </Translate>
-            </span>
-            <a className="alert-link">
-              <Translate contentKey="global.messages.info.authenticated.link"> sign in</Translate>
-            </a>
-            <span>
-              <Translate contentKey="global.messages.info.authenticated.suffix">
-                , you can try the default accounts:
-                <br />- Administrator (login=&quot;admin&quot; and password=&quot;admin&quot;)
-                <br />- User (login=&quot;user&quot; and password=&quot;user&quot;).
-              </Translate>
-            </span>
-          </Alert>
         </Col>
       </Row>
     </div>

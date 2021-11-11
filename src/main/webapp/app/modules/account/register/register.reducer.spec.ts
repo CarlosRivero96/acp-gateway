@@ -87,7 +87,7 @@ describe('Creating account tests', () => {
           payload: resolvedObject,
         },
       ];
-      await store.dispatch(handleRegister({ login: '', email: '', password: '' }));
+      await store.dispatch(handleRegister({ login: '', firstName: '', lastName: '', email: '', password: '' }));
       expect(store.getActions()[0]).toMatchObject(expectedActions[0]);
       expect(store.getActions()[1]).toMatchObject(expectedActions[1]);
     });

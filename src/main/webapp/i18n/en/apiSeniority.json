@@ -1,0 +1,29 @@
+{
+  "gatewayApp": {
+    "apiSeniority": {
+      "home": {
+        "title": "Seniorities",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Seniority",
+        "createOrEditLabel": "Create or edit a Seniority",
+        "notFound": "No Seniorities found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Seniority {{ id }}?"
+      },
+      "detail": {
+        "title": "Seniority"
+      },
+      "id": "ID",
+      "name": "Name",
+      "careerProfile": "Career Profile"
+    }
+  },
+  "apiApp": {
+    "apiSeniority": {
+      "created": "A new Seniority is created with identifier {{ param }}",
+      "updated": "A Seniority is updated with identifier {{ param }}",
+      "deleted": "A Seniority is deleted with identifier {{ param }}"
+    }
+  }
+}

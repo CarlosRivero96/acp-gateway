@@ -1,0 +1,39 @@
+{
+  "name": "UserSkill",
+  "fields": [
+    {
+      "fieldName": "level",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "userData",
+      "otherEntityRelationshipName": "userSkill",
+      "relationshipValidateRules": "required",
+      "relationshipName": "user"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "skill",
+      "otherEntityRelationshipName": "userSkill",
+      "relationshipValidateRules": "required",
+      "relationshipName": "skill"
+    }
+  ],
+  "entityTableName": "user_skill",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "microserviceName": "api",
+  "clientRootFolder": "api",
+  "databaseType": "sql",
+  "changelogDate": "20211014163903"
+}

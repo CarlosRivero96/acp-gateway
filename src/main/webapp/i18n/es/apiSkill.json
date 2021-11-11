@@ -1,0 +1,30 @@
+{
+  "gatewayApp": {
+    "apiSkill": {
+      "home": {
+        "title": "Habilidades",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nueva habilidad",
+        "createOrEditLabel": "Crear o editar habilidad",
+        "notFound": "Ningúna habilidad encontrada"
+      },
+      "delete": {
+        "question": "¿Seguro que quiere eliminar la habilidad {{ id }}?"
+      },
+      "detail": {
+        "title": "Habilidad"
+      },
+      "id": "ID",
+      "name": "Name",
+      "description": "Description",
+      "category": "Category"
+    }
+  },
+  "apiApp": {
+    "apiSkill": {
+      "created": "Una nueva habilidad ha sido creada con el identificador {{ param }}",
+      "updated": "Una habilidad ha sido actualizada con el identificador {{ param }}",
+      "deleted": "Una habilidad ha sido eliminada con el identificador {{ param }}"
+    }
+  }
+}

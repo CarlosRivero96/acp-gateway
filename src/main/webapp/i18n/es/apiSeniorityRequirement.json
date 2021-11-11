@@ -1,0 +1,30 @@
+{
+  "gatewayApp": {
+    "apiSeniorityRequirement": {
+      "home": {
+        "title": "Seniority Requirements",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Seniority Requirement",
+        "createOrEditLabel": "Crear o editar Seniority Requirement",
+        "notFound": "Ningún Seniority Requirements encontrado"
+      },
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Seniority Requirement {{ id }}?"
+      },
+      "detail": {
+        "title": "Seniority Requirement"
+      },
+      "id": "ID",
+      "level": "Level",
+      "skill": "Skill",
+      "seniority": "Seniority"
+    }
+  },
+  "apiApp": {
+    "apiSeniorityRequirement": {
+      "created": "Un nuevo Seniority Requirement ha sido creado con el identificador {{ param }}",
+      "updated": "Un Seniority Requirement ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Seniority Requirement ha sido eliminado con el identificador {{ param }}"
+    }
+  }
+}

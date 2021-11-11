@@ -42,6 +42,18 @@
     "clientPackageManager": "npm",
     "clientThemeVariant": "",
     "languages": ["en", "es"],
-    "enableGradleEnterprise": false
+    "enableGradleEnterprise": false,
+    "entities": [
+      "UserData",
+      "CareerProfile",
+      "Seniority",
+      "Mission",
+      "Skill",
+      "Category",
+      "UserMission",
+      "UserSkill",
+      "SeniorityRequirement"
+    ],
+    "lastLiquibaseTimestamp": 1634229544000
   }
 }

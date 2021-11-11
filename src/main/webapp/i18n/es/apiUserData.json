@@ -1,0 +1,34 @@
+{
+  "gatewayApp": {
+    "apiUserData": {
+      "home": {
+        "title": "Datos de usuario",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo User Data",
+        "createOrEditLabel": "Crear o editar User Data",
+        "editLabel": "Editar datos de usuario",
+        "notFound": "Ningún User Data encontrado"
+      },
+      "delete": {
+        "question": "¿Seguro que quiere eliminar User Data {{ id }}?"
+      },
+      "detail": {
+        "title": "Datos de usuario"
+      },
+      "id": "ID",
+      "login": "Login",
+      "firstName": "Nombre",
+      "lastName": "Apellido",
+      "email": "Correo Electrónico",
+      "birthdate": "Fecha de nacimiento",
+      "careerProfile": "Perfil de carrera"
+    }
+  },
+  "apiApp": {
+    "apiUserData": {
+      "created": "Un nuevo User Data ha sido creado con el identificador {{ param }}",
+      "updated": "Datos de usuario actualizados",
+      "deleted": "Un User Data ha sido eliminado con el identificador {{ param }}"
+    }
+  }
+}

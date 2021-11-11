@@ -1,0 +1,28 @@
+{
+  "gatewayApp": {
+    "apiCategory": {
+      "home": {
+        "title": "Categories",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Category",
+        "createOrEditLabel": "Crear o editar Category",
+        "notFound": "Ningún Categories encontrado"
+      },
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Category {{ id }}?"
+      },
+      "detail": {
+        "title": "Category"
+      },
+      "id": "ID",
+      "name": "Name"
+    }
+  },
+  "apiApp": {
+    "apiCategory": {
+      "created": "Un nuevo Category ha sido creado con el identificador {{ param }}",
+      "updated": "Un Category ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Category ha sido eliminado con el identificador {{ param }}"
+    }
+  }
+}
