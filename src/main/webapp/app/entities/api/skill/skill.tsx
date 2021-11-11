@@ -86,12 +86,12 @@ export const Skill = (props: RouteComponentProps<{ url: string }>) => {
                           <Translate contentKey="entity.action.edit">Edit</Translate>
                         </span>
                       </Button>
-                      <Button tag={Link} to={`${match.url}/${skill.id}/delete`} color="danger" size="sm" data-cy="entityDeleteButton">
+                      {/* <Button tag={Link} to={`${match.url}/${skill.id}/delete`} color="danger" size="sm" data-cy="entityDeleteButton">
                         <FontAwesomeIcon icon="trash" />{' '}
                         <span className="d-none d-md-inline">
                           <Translate contentKey="entity.action.delete">Delete</Translate>
                         </span>
-                      </Button>
+                      </Button> */}
                     </div>
                   </td>
                 </tr>
