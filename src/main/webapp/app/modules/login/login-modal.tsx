@@ -1,10 +1,14 @@
+/* eslint-disable no-console */
 import React from 'react';
+import axios from 'axios';
 import { Translate, translate, ValidatedField } from 'react-jhipster';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Alert, Row, Col, Form } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { GoogleLoginButton } from 'app/shared/components/google-login/google-login.component';
 import { divide } from 'lodash';
+import { GoogleLogin } from 'react-google-login';
+import { handleRegister } from '../account/register/register.reducer';
+import { useAppSelector, useAppDispatch } from 'app/config/store';
 
 export interface ILoginModalProps {
   showModal: boolean;
@@ -14,6 +18,9 @@ export interface ILoginModalProps {
 }
 
 const LoginModal = (props: ILoginModalProps) => {
+  const dispatch = useAppDispatch();
+  const currentLocale = useAppSelector(state => state.locale.currentLocale);
+
   const login = ({ username, password, rememberMe }) => {
     props.handleLogin(username, password, rememberMe);
   };
@@ -25,6 +32,50 @@ const LoginModal = (props: ILoginModalProps) => {
   } = useForm({ mode: 'onTouched' });
 
   const { loginError, handleClose } = props;
+
+  // Google Login
+  const GoogleLoginButton = () => {
+    const clientId = '956284171868-2a7rhl7v9cskj6ttr95p6cqkqtive3va.apps.googleusercontent.com';
+
+    const onSuccess = res => {
+      console.log('[Login Success] currentUser:', res.profileObj);
+      axios.get<boolean>('api/account/' + res.profileObj.email).then(response => {
+        console.log('[RESPONSE]:', response);
+        if (response.data.valueOf()) {
+          props.handleLogin(res.profileObj.email, res.profileObj.email, true);
+        } else {
+          dispatch(
+            handleRegister({
+              login: res.profileObj.email,
+              email: res.profileObj.email,
+              password: res.profileObj.email,
+              firstName: res.profileObj.givenName,
+              lastName: res.profileObj.familyName,
+              langKey: currentLocale,
+            })
+          );
+          console.log('YESSSSSSSSSSSSS');
+        }
+      });
+    };
+
+    const onFailure = res => {
+      console.log('[Login failed] res:', res);
+    };
+
+    return (
+      <div>
+        <GoogleLogin
+          clientId={clientId}
+          buttonText="Sign in with Google"
+          onSuccess={onSuccess}
+          onFailure={onFailure}
+          style={{}}
+          cookiePolicy={'single_host_origin'}
+        />
+      </div>
+    );
+  };
 
   return (
     <Modal isOpen={props.showModal} toggle={handleClose} backdrop="static" id="login-page" autoFocus={false}>
@@ -44,12 +95,16 @@ const LoginModal = (props: ILoginModalProps) => {
               ) : null}
             </Col>
             <Col md="12">
+              <div style={{ textAlign: 'center' }}>
+                <GoogleLoginButton />
+                <div className="mt-1">&nbsp;</div>
+                <Translate contentKey="login.form.or">OR</Translate>
+              </div>
               <ValidatedField
                 name="username"
                 label={translate('global.form.username.label')}
                 placeholder={translate('global.form.username.placeholder')}
                 required
-                autoFocus
                 data-cy="username"
                 validate={{ required: 'Username cannot be empty!' }}
                 register={register}
@@ -86,9 +141,6 @@ const LoginModal = (props: ILoginModalProps) => {
             <Translate contentKey="login.form.button">Sign in</Translate>
           </Button>
           <div className="mt-1">&nbsp;</div>
-          <GoogleLoginButton />
-        </ModalBody>
-        <ModalFooter>
           <Alert color="warning">
             <span>
               <Translate contentKey="global.messages.info.register.noaccount">You don&apos;t have an account yet?</Translate>
@@ -97,7 +149,8 @@ const LoginModal = (props: ILoginModalProps) => {
               <Translate contentKey="global.messages.info.register.link">Register a new account</Translate>
             </Link>
           </Alert>
-        </ModalFooter>
+        </ModalBody>
+        <ModalFooter></ModalFooter>
       </Form>
     </Modal>
   );
