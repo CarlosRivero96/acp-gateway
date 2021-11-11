@@ -48,6 +48,8 @@ public interface UserRepository extends R2dbcRepository<User, Long>, UserReposit
 
     Mono<Long> count();
 
+    Mono<Boolean> existsByLoginAndActivatedIsTrue(String login);
+
     @Query("INSERT INTO jhi_user_authority VALUES(:userId, :authority)")
     Mono<Void> saveUserAuthority(Long userId, String authority);
 

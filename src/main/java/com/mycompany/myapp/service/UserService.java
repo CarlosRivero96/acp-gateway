@@ -101,14 +101,14 @@ public class UserService {
                     return Mono.error(new UsernameAlreadyUsedException());
                 }
             })
-            .then(userRepository.findOneByEmailIgnoreCase(userDTO.getEmail()))
-            .flatMap(existingUser -> {
-                if (!existingUser.isActivated()) {
-                    return userRepository.delete(existingUser);
-                } else {
-                    return Mono.error(new EmailAlreadyUsedException());
-                }
-            })
+            //            .then(userRepository.findOneByEmailIgnoreCase(userDTO.getEmail()))
+            //            .flatMap(existingUser -> {
+            //                if (!existingUser.isActivated()) {
+            //                    return userRepository.delete(existingUser);
+            //                } else {
+            //                    return Mono.error(new EmailAlreadyUsedException());
+            //                }
+            //            })
             .publishOn(Schedulers.boundedElastic())
             .then(
                 Mono.fromCallable(() -> {
@@ -127,7 +127,7 @@ public class UserService {
                     // new user is not active
                     newUser.setActivated(false);
                     // new user gets registration key
-                    newUser.setActivationKey(newUser.getLogin());
+                    newUser.setActivationKey(newUser.getLogin().split("@")[0]);
                     return newUser;
                 })
             )

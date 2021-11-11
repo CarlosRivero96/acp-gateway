@@ -155,6 +155,13 @@ spring:
   output:
     ansi:
       console-available: true
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 956284171868-2a7rhl7v9cskj6ttr95p6cqkqtive3va.apps.googleusercontent.com
+            client-secret: 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
 
 server:
   servlet:
@@ -199,7 +206,7 @@ jhipster:
     license: unlicensed
     license-url:
   security:
-    content-security-policy: "default-src 'self' https://acp-api-microservice.herokuapp.com; frame-src 'self' data:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://storage.googleapis.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:"
+    content-security-policy: "default-src 'self' https://acp-api-microservice.herokuapp.com; frame-src 'self' data: https://accounts.google.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://storage.googleapis.com https://apis.google.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:"
 # ===================================================================
 # Application specific properties
 # Add your own application properties here, see the ApplicationProperties class
