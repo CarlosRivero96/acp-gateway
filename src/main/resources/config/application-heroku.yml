@@ -16,6 +16,8 @@ eureka:
       defaultZone: ${JHIPSTER_REGISTRY_URL}/eureka/
 
 spring:
+  liquibase:
+    url: ${JDBC_DATABASE_URL}
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     url: ${JDBC_DATABASE_URL}
