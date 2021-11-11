@@ -98,6 +98,8 @@ public class SecurityConfiguration {
             .pathMatchers("/api/activate").permitAll()
             .pathMatchers("/api/account/reset-password/init").permitAll()
             .pathMatchers("/api/account/reset-password/finish").permitAll()
+            .pathMatchers("/api/account").authenticated()
+            .pathMatchers("/api/account/**").permitAll()
             .pathMatchers("/api/auth-info").permitAll()
             .pathMatchers("/api/admin/**").hasAuthority(AuthoritiesConstants.ADMIN)
             .pathMatchers("/api/**").authenticated()
