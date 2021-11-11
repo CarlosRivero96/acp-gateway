@@ -116,7 +116,6 @@ export const SkillUpdate = (props: RouteComponentProps<{ id: string }>) => {
                 data-cy="category"
                 label={translate('gatewayApp.apiSkill.category')}
                 type="select"
-                required
               >
                 <option value="" key="0" />
                 {categories
