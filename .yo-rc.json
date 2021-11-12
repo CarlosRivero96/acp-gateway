@@ -54,6 +54,9 @@
       "UserSkill",
       "SeniorityRequirement"
     ],
-    "lastLiquibaseTimestamp": 1634229544000
+    "lastLiquibaseTimestamp": 1634229544000,
+    "herokuAppName": "acp-gateway",
+    "herokuDeployType": "git",
+    "herokuJavaVersion": "11"
   }
 }
