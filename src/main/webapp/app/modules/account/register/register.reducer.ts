@@ -21,7 +21,8 @@ export const handleRegister = createAsyncThunk(
     // Post auth service
     await axios
       .post<any>('api/register', {
-        login: data.login,
+        login: data.login.toLowerCase,
+        email: data.email,
         password: data.password,
         langKey: data.langKey,
       })
@@ -29,7 +30,7 @@ export const handleRegister = createAsyncThunk(
         // Post api service
         axios
           .post<any>('services/api/api/user-data/register', {
-            login: data.login,
+            login: data.login.toLowerCase,
             firstName: data.firstName,
             lastName: data.lastName,
             email: data.email,
