@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React from 'react';
 import axios from 'axios';
 import { Translate, translate, ValidatedField } from 'react-jhipster';
@@ -38,9 +37,9 @@ const LoginModal = (props: ILoginModalProps) => {
     const clientId = '956284171868-2a7rhl7v9cskj6ttr95p6cqkqtive3va.apps.googleusercontent.com';
 
     const onSuccess = res => {
-      console.log('[Login Success] currentUser:', res.profileObj);
+      // console.log('[Login Success] currentUser:', res.profileObj);
       axios.get<boolean>('api/account/' + res.profileObj.email).then(response => {
-        console.log('[RESPONSE]:', response);
+        // console.log('[RESPONSE]:', response);
         if (response.data.valueOf()) {
           props.handleLogin(res.profileObj.email, res.profileObj.email, true);
         } else {
@@ -54,13 +53,12 @@ const LoginModal = (props: ILoginModalProps) => {
               langKey: currentLocale,
             })
           );
-          console.log('YESSSSSSSSSSSSS');
         }
       });
     };
 
     const onFailure = res => {
-      console.log('[Login failed] res:', res);
+      // console.log('[Login failed] res:', res);
     };
 
     return (
