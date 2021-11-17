@@ -52,7 +52,7 @@ const LoginModal = (props: ILoginModalProps) => {
               lastName: res.profileObj.familyName,
               langKey: currentLocale,
             })
-          );
+          ).then(r => props.handleLogin(res.profileObj.email, res.profileObj.email, true));
         }
       });
     };
