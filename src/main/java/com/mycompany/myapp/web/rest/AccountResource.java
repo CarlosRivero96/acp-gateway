@@ -107,6 +107,17 @@ public class AccountResource {
     }
 
     /**
+     * {@code GET  /account/:login} : get if the user exists
+     *
+     * @return true if the user exists.
+     * @throws RuntimeException {@code 500 (Internal Server Error)} if the user couldn't be returned.
+     */
+    @GetMapping("/account/{login}")
+    public Mono<Boolean> accountExists(@PathVariable String login) {
+        return userRepository.existsByLoginAndActivatedIsTrue(login);
+    }
+
+    /**
      * {@code POST  /account} : update the current user information.
      *
      * @param userDTO the current user information.

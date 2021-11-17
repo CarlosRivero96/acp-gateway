@@ -19,6 +19,7 @@ export const initialState = {
   redirectMessage: null as unknown as string,
   sessionHasBeenFetched: false,
   logoutUrl: null as unknown as string,
+  google: false,
 };
 
 export type AuthenticationState = Readonly<typeof initialState>;

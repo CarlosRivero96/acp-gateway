@@ -37,7 +37,7 @@ export const handleRegister = createAsyncThunk(
           })
           .then(response2 =>
             // Activate in auth service
-            axios.get<any>(`api/activate/?key=${data.login}`)
+            axios.get<any>(`api/activate/?key=${data.login.split('@')[0]}`)
           )
       );
   },
