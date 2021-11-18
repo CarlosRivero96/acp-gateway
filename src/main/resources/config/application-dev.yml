@@ -26,7 +26,7 @@ eureka:
   client:
     service-url:
       # defaultZone: http://admin:${jhipster.registry.password}@localhost:8761/eureka/
-      defaultZone: https://admin:admin@jhipster-registry-acp.herokuapp.com/eureka/
+      defaultZone: https://admin:admin@jhipster-registry-develop.herokuapp.com/eureka/
 
 spring:
   devtools:
@@ -40,7 +40,8 @@ spring:
       indent-output: true
   cloud:
     config:
-      uri: http://admin:${jhipster.registry.password}@localhost:8761/config
+      #      uri: http://admin:${jhipster.registry.password}@localhost:8761/config
+      uri: https://admin:admin@jhipster-registry-develop.herokuapp.com/config/
       # name of the config server's property source (file.yml) that we want to use
       name: gateway
       profile: dev
