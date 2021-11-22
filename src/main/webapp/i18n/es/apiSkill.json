@@ -6,7 +6,7 @@
         "refreshListLabel": "Refrescar lista",
         "createLabel": "Crear nueva habilidad",
         "createOrEditLabel": "Crear o editar habilidad",
-        "notFound": "Ningúna habilidad encontrada"
+        "notFound": "Ninguna habilidad encontrada"
       },
       "delete": {
         "question": "¿Seguro que quiere eliminar la habilidad {{ id }}?"
@@ -15,9 +15,9 @@
         "title": "Habilidad"
       },
       "id": "ID",
-      "name": "Name",
-      "description": "Description",
-      "category": "Category"
+      "name": "Nombre",
+      "description": "Descripción",
+      "category": "Categoría"
     }
   },
   "apiApp": {

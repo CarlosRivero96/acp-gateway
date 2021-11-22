@@ -24,7 +24,8 @@
       "description": "Descripción",
       "active": "Activa",
       "levelRequired": "Nivel Requerido",
-      "skill": "Habilidad"
+      "skill": "Habilidad",
+      "requirement": "Requerimiento"
     }
   },
   "apiApp": {

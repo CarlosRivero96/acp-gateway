@@ -90,6 +90,9 @@ export const Missions = (props: RouteComponentProps<{ url: string }>) => {
                     <th>
                       <Translate contentKey="gatewayApp.apiMission.levelRequired">Level Required</Translate>
                     </th>
+                    <th>
+                      <Translate contentKey="entity.action.actions">Actions</Translate>
+                    </th>
                     <th />
                   </tr>
                 </thead>
@@ -99,7 +102,7 @@ export const Missions = (props: RouteComponentProps<{ url: string }>) => {
                       <td>{mission.name}</td>
                       <td>{mission.skill ? <Link to={`/skill/${mission.skill.id}`}>{mission.skill.name}</Link> : ''}</td>
                       <td>{mission.levelRequired}</td>
-                      <td className="text-right">
+                      <td>
                         <div className="btn-group flex-btn-group-container">
                           <Button tag={Link} to={`${match.url}/${mission.id}`} color="info" size="sm" data-cy="entityDetailsButton">
                             <FontAwesomeIcon icon="eye" />{' '}
