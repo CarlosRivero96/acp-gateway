@@ -31,7 +31,7 @@ import userSkill from 'app/entities/api/user-skill/user-skill.reducer';
 import seniorityRequirement from 'app/entities/api/seniority-requirement/seniority-requirement.reducer';
 /* jhipster-needle-add-reducer-import - JHipster will add reducer here */
 
-import missions from 'app/modules/missions/missions.reducer';
+import missions from 'app/modules/account/missions/missions.reducer';
 
 const rootReducer = {
   authentication,

@@ -8,6 +8,9 @@ const accountMenuItemsAuthenticated = (
     <MenuItem icon="wrench" to="/account/userdata" data-cy="settings">
       <Translate contentKey="gatewayApp.apiUserData.home.title">User Data</Translate>
     </MenuItem>
+    <MenuItem icon="flag" to="/account/missions" data-cy="missions">
+      <Translate contentKey="gatewayApp.apiMission.home.title">Missions</Translate>
+    </MenuItem>
     {/* <MenuItem icon="wrench" to="/account/settings" data-cy="settings">
       <Translate contentKey="global.menu.account.settings">Settings</Translate>
     </MenuItem> */}

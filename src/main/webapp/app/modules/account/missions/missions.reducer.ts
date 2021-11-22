@@ -8,7 +8,7 @@ import { IMission, defaultValue } from 'app/shared/model/api/mission.model';
 const initialState = {
   loading: false,
   errorMessage: null,
-  avilable: [],
+  available: [],
   started: [],
   completed: [],
   entity: defaultValue,
@@ -20,23 +20,23 @@ const apiUrl = 'services/api/api/missions';
 
 // Actions
 
-export const getAvailable = createAsyncThunk('mission/fetch_entity_list', async ({ page, size, sort }: IQueryParams) => {
+export const getAvailable = createAsyncThunk('missions/fetch_available_list', async ({ page, size, sort }: IQueryParams) => {
   const requestUrl = `${apiUrl}/available?cacheBuster=${new Date().getTime()}`;
   return axios.get<IMission[]>(requestUrl);
 });
 
-export const getStarted = createAsyncThunk('mission/fetch_entity_list', async ({ page, size, sort }: IQueryParams) => {
+export const getStarted = createAsyncThunk('missions/fetch_started_list', async ({ page, size, sort }: IQueryParams) => {
   const requestUrl = `${apiUrl}/started?cacheBuster=${new Date().getTime()}`;
   return axios.get<IMission[]>(requestUrl);
 });
 
-export const getCompleted = createAsyncThunk('mission/fetch_entity_list', async ({ page, size, sort }: IQueryParams) => {
+export const getCompleted = createAsyncThunk('missions/fetch_completed_list', async ({ page, size, sort }: IQueryParams) => {
   const requestUrl = `${apiUrl}/completed?cacheBuster=${new Date().getTime()}`;
   return axios.get<IMission[]>(requestUrl);
 });
 
 export const getMission = createAsyncThunk(
-  'mission/fetch_entity',
+  'missions/fetch_mission',
   async (id: string | number) => {
     const requestUrl = `${apiUrl}/${id}`;
     return axios.get<IMission>(requestUrl);
@@ -69,7 +69,7 @@ export const MissionsSlice = createSlice({
         return {
           ...state,
           loading: false,
-          avilable: action.payload.data,
+          available: action.payload.data,
         };
       })
       .addMatcher(isFulfilled(getStarted), (state, action) => {

@@ -14,6 +14,11 @@
       "detail": {
         "title": "Mission"
       },
+      "category": {
+        "available": "Available",
+        "started": "In progress",
+        "completed": "Completed"
+      },
       "id": "ID",
       "name": "Name",
       "description": "Description",

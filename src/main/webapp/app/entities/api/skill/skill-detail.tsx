@@ -46,19 +46,19 @@ export const SkillDetail = (props: RouteComponentProps<{ id: string }>) => {
           </dt>
           <dd>{skillEntity.category ? skillEntity.category.name : ''}</dd>
         </dl>
-        <Button tag={Link} to="/skill" replace color="info" data-cy="entityDetailsBackButton">
+        <Button replace color="info" data-cy="entityDetailsBackButton" onClick={() => props.history.goBack()}>
           <FontAwesomeIcon icon="arrow-left" />{' '}
           <span className="d-none d-md-inline">
             <Translate contentKey="entity.action.back">Back</Translate>
           </span>
         </Button>
         &nbsp;
-        <Button tag={Link} to={`/skill/${skillEntity.id}/edit`} replace color="primary">
+        {/* <Button tag={Link} to={`/skill/${skillEntity.id}/edit`} replace color="primary">
           <FontAwesomeIcon icon="pencil-alt" />{' '}
           <span className="d-none d-md-inline">
             <Translate contentKey="entity.action.edit">Edit</Translate>
           </span>
-        </Button>
+        </Button> */}
       </Col>
     </Row>
   );
