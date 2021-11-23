@@ -1,9 +1,10 @@
 import axios from 'axios';
-import { createSlice, createAsyncThunk, isFulfilled, isPending, isRejected } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, isFulfilled, isPending, isRejected, PayloadAction } from '@reduxjs/toolkit';
 
 import { cleanEntity } from 'app/shared/util/entity-utils';
 import { IQueryParams, createEntitySlice, EntityState, serializeAxiosError } from 'app/shared/reducers/reducer.utils';
 import { IMission, defaultValue } from 'app/shared/model/api/mission.model';
+import thunk from 'redux-thunk';
 
 const initialState = {
   loading: false,
@@ -14,6 +15,7 @@ const initialState = {
   entity: defaultValue,
   updating: false,
   updateSuccess: false,
+  activeTab: '1',
 };
 
 const apiUrl = 'services/api/api/missions';
@@ -44,6 +46,27 @@ export const getMission = createAsyncThunk(
   { serializeError: serializeAxiosError }
 );
 
+export const startMission = createAsyncThunk('missions/start_mission', async (mission: IMission, thunkAPI) => {
+  const requestUrl = `${apiUrl}/start`;
+  const result = axios.post<IMission>(requestUrl, cleanEntity(mission));
+  thunkAPI.dispatch(getAvailable({}));
+  return result;
+});
+
+export const completeMission = createAsyncThunk('missions/complete_mission', async (mission: IMission, thunkAPI) => {
+  const requestUrl = `${apiUrl}/complete`;
+  const result = axios.post<IMission>(requestUrl, cleanEntity(mission));
+  thunkAPI.dispatch(getStarted({}));
+  return result;
+});
+
+export const cancelMission = createAsyncThunk('missions/cancel_mission', async (mission: IMission, thunkAPI) => {
+  const requestUrl = `${apiUrl}/cancel`;
+  const result = axios.post<IMission>(requestUrl, cleanEntity(mission));
+  thunkAPI.dispatch(getStarted({}));
+  return result;
+});
+
 // slice
 
 export const MissionsSlice = createSlice({
@@ -52,6 +75,12 @@ export const MissionsSlice = createSlice({
   reducers: {
     reset() {
       return initialState;
+    },
+    toggle(state, action: PayloadAction<string>) {
+      return {
+        ...state,
+        activeTab: action.payload,
+      };
     },
   },
   extraReducers(builder) {
@@ -86,10 +115,20 @@ export const MissionsSlice = createSlice({
           completed: action.payload.data,
         };
       })
+      .addMatcher(isFulfilled(startMission, completeMission, cancelMission), state => {
+        state.updating = false;
+        state.loading = false;
+        state.updateSuccess = true;
+      })
       .addMatcher(isPending(getAvailable, getStarted, getCompleted, getMission), state => {
         state.errorMessage = null;
         state.updateSuccess = false;
         state.loading = true;
+      })
+      .addMatcher(isPending(startMission, completeMission, cancelMission), state => {
+        state.errorMessage = null;
+        state.updateSuccess = false;
+        state.updating = true;
       })
       .addMatcher(isRejected(), (state, action) => {
         state.loading = false;
@@ -100,7 +139,7 @@ export const MissionsSlice = createSlice({
   },
 });
 
-export const { reset } = MissionsSlice.actions;
+export const { reset, toggle } = MissionsSlice.actions;
 
 // Reducer
 export default MissionsSlice.reducer;

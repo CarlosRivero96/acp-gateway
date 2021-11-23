@@ -2,13 +2,14 @@ import React from 'react';
 import MenuItem from 'app/shared/layout/menus/menu-item';
 import { Translate, translate } from 'react-jhipster';
 import { NavDropdown } from './menu-components';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 const accountMenuItemsAuthenticated = (
   <>
     <MenuItem icon="wrench" to="/account/userdata" data-cy="settings">
       <Translate contentKey="gatewayApp.apiUserData.home.title">User Data</Translate>
     </MenuItem>
-    <MenuItem icon="flag" to="/account/missions" data-cy="missions">
+    <MenuItem icon={faStar} to="/account/missions" data-cy="missions">
       <Translate contentKey="gatewayApp.apiMission.home.title">Missions</Translate>
     </MenuItem>
     {/* <MenuItem icon="wrench" to="/account/settings" data-cy="settings">

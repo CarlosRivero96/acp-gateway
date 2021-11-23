@@ -6,7 +6,7 @@ import { byteSize, translate, Translate } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classnames from 'classnames';
 
-import { getAvailable, getStarted, getCompleted } from './missions.reducer';
+import { getAvailable, getStarted, getCompleted, toggle } from './missions.reducer';
 import { IMission } from 'app/shared/model/api/mission.model';
 import { APP_DATE_FORMAT, APP_LOCAL_DATE_FORMAT } from 'app/config/constants';
 import { useAppDispatch, useAppSelector } from 'app/config/store';
@@ -18,10 +18,15 @@ export const Missions = (props: RouteComponentProps<{ url: string }>) => {
   const startedList = useAppSelector(state => state.missions.started);
   const completedList = useAppSelector(state => state.missions.completed);
   const loading = useAppSelector(state => state.missions.loading);
+  const activeTab = useAppSelector(state => state.missions.activeTab);
 
-  const [activeTab, setActiveTab] = useState('1');
-  const toggle = tab => {
-    if (activeTab !== tab) setActiveTab(tab);
+  // const [activeTab, setActiveTab] = useState('1');
+  // const toggle = tab => {
+  //   if (activeTab !== tab) setActiveTab(tab);
+  // };
+
+  const changeTab = tab => {
+    dispatch(toggle(tab));
   };
 
   useEffect(() => {
@@ -43,7 +48,7 @@ export const Missions = (props: RouteComponentProps<{ url: string }>) => {
           <NavLink
             className={classnames({ active: activeTab === '1' })}
             onClick={() => {
-              toggle('1');
+              changeTab('1');
             }}
           >
             <Translate contentKey="gatewayApp.apiMission.category.available">Available</Translate>
@@ -53,7 +58,7 @@ export const Missions = (props: RouteComponentProps<{ url: string }>) => {
           <NavLink
             className={classnames({ active: activeTab === '2' })}
             onClick={() => {
-              toggle('2');
+              changeTab('2');
             }}
           >
             <Translate contentKey="gatewayApp.apiMission.category.started">In progress</Translate>
@@ -63,7 +68,7 @@ export const Missions = (props: RouteComponentProps<{ url: string }>) => {
           <NavLink
             className={classnames({ active: activeTab === '3' })}
             onClick={() => {
-              toggle('3');
+              changeTab('3');
             }}
           >
             <Translate contentKey="gatewayApp.apiMission.category.completed">Completed</Translate>
@@ -143,6 +148,9 @@ export const Missions = (props: RouteComponentProps<{ url: string }>) => {
                     <th>
                       <Translate contentKey="gatewayApp.apiMission.levelRequired">Level Required</Translate>
                     </th>
+                    <th>
+                      <Translate contentKey="entity.action.actions">Actions</Translate>
+                    </th>
                     <th />
                   </tr>
                 </thead>
@@ -152,7 +160,7 @@ export const Missions = (props: RouteComponentProps<{ url: string }>) => {
                       <td>{mission.name}</td>
                       <td>{mission.skill ? <Link to={`skill/${mission.skill.id}`}>{mission.skill.name}</Link> : ''}</td>
                       <td>{mission.levelRequired}</td>
-                      <td className="text-right">
+                      <td>
                         <div className="btn-group flex-btn-group-container">
                           <Button tag={Link} to={`${match.url}/${mission.id}`} color="info" size="sm" data-cy="entityDetailsButton">
                             <FontAwesomeIcon icon="eye" />{' '}
@@ -193,6 +201,9 @@ export const Missions = (props: RouteComponentProps<{ url: string }>) => {
                     <th>
                       <Translate contentKey="gatewayApp.apiMission.levelRequired">Level Required</Translate>
                     </th>
+                    <th>
+                      <Translate contentKey="entity.action.actions">Actions</Translate>
+                    </th>
                     <th />
                   </tr>
                 </thead>
@@ -202,7 +213,7 @@ export const Missions = (props: RouteComponentProps<{ url: string }>) => {
                       <td>{mission.name}</td>
                       <td>{mission.skill ? <Link to={`skill/${mission.skill.id}`}>{mission.skill.name}</Link> : ''}</td>
                       <td>{mission.levelRequired}</td>
-                      <td className="text-right">
+                      <td>
                         <div className="btn-group flex-btn-group-container">
                           <Button tag={Link} to={`${match.url}/${mission.id}`} color="info" size="sm" data-cy="entityDetailsButton">
                             <FontAwesomeIcon icon="eye" />{' '}

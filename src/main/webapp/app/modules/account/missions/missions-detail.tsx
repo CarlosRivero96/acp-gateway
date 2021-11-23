@@ -3,13 +3,16 @@ import { Link, RouteComponentProps } from 'react-router-dom';
 import { Button, Row, Col, Modal, ModalBody, ModalHeader } from 'reactstrap';
 import { Translate, byteSize } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faMinus, faCheck } from '@fortawesome/free-solid-svg-icons';
 
-import { getMission } from './missions.reducer';
+import { getMission, startMission, completeMission, cancelMission } from './missions.reducer';
 import { APP_DATE_FORMAT, APP_LOCAL_DATE_FORMAT } from 'app/config/constants';
 import { useAppDispatch, useAppSelector } from 'app/config/store';
 
-export const MissionsDetail = (props: RouteComponentProps<{ id: string; category: string }>) => {
+export const MissionsDetail = (props: RouteComponentProps<{ id: string }>) => {
   const dispatch = useAppDispatch();
+  const missionEntity = useAppSelector(state => state.missions.entity);
+  const activeTab = useAppSelector(state => state.missions.activeTab);
 
   useEffect(() => {
     dispatch(getMission(props.match.params.id));
@@ -19,38 +22,58 @@ export const MissionsDetail = (props: RouteComponentProps<{ id: string; category
     props.history.goBack();
   };
 
-  const missionEntity = useAppSelector(state => state.missions.entity);
+  const takeMission = () => {
+    dispatch(startMission(missionEntity));
+    handleClose();
+  };
 
-  // let actionButton = <></>;
-  // if (props.match.params.category === "1") {
-  //   actionButton =
-  //     <Button replace color="warning" data-cy="takeMissionButton" onClick={() => }>
+  const finishMission = () => {
+    dispatch(completeMission(missionEntity));
+    handleClose();
+  };
 
-  //     </Button>;
-  // } else if (props.match.params.category === "2") {
-  //   actionButton =
-  //     <>
-  //       <Button>
+  const stopMission = () => {
+    dispatch(cancelMission(missionEntity));
+    handleClose();
+  };
 
-  //       </Button>
-  //       <Button>
-
-  //       </Button>
-  //     </>
-  // } else if (props.match.params.category === "3") {
-  //   actionButton = <></>;
-  // }
+  let actionButton = <></>;
+  if (activeTab === '1') {
+    actionButton = (
+      <Button color="warning" data-cy="takeMissionButton" onClick={takeMission} style={{ margin: '5px' }}>
+        <FontAwesomeIcon icon={faPlus} />{' '}
+        <span className="d-none d-md-inline">
+          <Translate contentKey="entity.action.startmission">Start</Translate>
+        </span>
+      </Button>
+    );
+  } else if (activeTab === '2') {
+    actionButton = (
+      <>
+        <Button color="danger" data-cy="takeMissionButton" onClick={stopMission} style={{ margin: '5px' }}>
+          <FontAwesomeIcon icon={faMinus} />{' '}
+          <span className="d-none d-md-inline">
+            <Translate contentKey="entity.action.cancelmission">Cancel</Translate>
+          </span>
+        </Button>
+        <Button color="success" data-cy="completeMissionButton" onClick={finishMission} style={{ margin: '5px' }}>
+          <FontAwesomeIcon icon={faCheck} />{' '}
+          <span className="d-none d-md-inline">
+            <Translate contentKey="entity.action.completemission">Complete</Translate>
+          </span>
+        </Button>
+      </>
+    );
+  }
 
   return (
     <Modal isOpen toggle={handleClose}>
       <ModalHeader>
-        <h2 data-cy="missionDetailsHeading">
-          <Translate contentKey="gatewayApp.apiMission.detail.title">Mission</Translate>: {missionEntity.name}
-        </h2>
+        <Translate contentKey="gatewayApp.apiMission.detail.title">Mission</Translate>: {missionEntity.name}
       </ModalHeader>
       <ModalBody>
         <Row>
-          <Col md="8">
+          <Col md="10">
             <dl className="jh-entity-details">
               <dt>
                 <span id="requirement">
@@ -65,12 +88,13 @@ export const MissionsDetail = (props: RouteComponentProps<{ id: string; category
               </dt>
               <dd>{missionEntity.description}</dd>
             </dl>
-            <Button replace color="info" data-cy="entityDetailsBackButton" onClick={() => props.history.goBack()}>
+            <Button color="info" data-cy="entityDetailsBackButton" onClick={() => props.history.goBack()} style={{ margin: '5px' }}>
               <FontAwesomeIcon icon="arrow-left" />{' '}
               <span className="d-none d-md-inline">
                 <Translate contentKey="entity.action.back">Back</Translate>
               </span>
             </Button>
+            {actionButton}
           </Col>
         </Row>
       </ModalBody>

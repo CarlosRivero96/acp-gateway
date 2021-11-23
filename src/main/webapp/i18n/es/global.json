@@ -108,7 +108,10 @@
       "edit": "Editar",
       "open": "Abrir",
       "save": "Guardar",
-      "view": "Ver"
+      "view": "Ver",
+      "startmission": "Empezar",
+      "cancelmission": "Cancelar",
+      "completemission": "Completar"
     },
     "detail": {
       "field": "Campo",
