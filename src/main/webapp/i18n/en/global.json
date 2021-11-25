@@ -99,6 +99,7 @@
   },
   "entity": {
     "action": {
+      "actions": "Actions",
       "addblob": "Add blob",
       "addimage": "Add image",
       "back": "Back",
@@ -107,7 +108,10 @@
       "edit": "Edit",
       "open": "Open",
       "save": "Save",
-      "view": "View"
+      "view": "View",
+      "startmission": "Start",
+      "cancelmission": "Cancel",
+      "completemission": "Complete"
     },
     "detail": {
       "field": "Field",

@@ -2,24 +2,30 @@
   "gatewayApp": {
     "apiMission": {
       "home": {
-        "title": "Missions",
+        "title": "Misiones",
         "refreshListLabel": "Refrescar lista",
-        "createLabel": "Crear nuevo Mission",
+        "createLabel": "Crear nueva misión",
         "createOrEditLabel": "Crear o editar Mission",
-        "notFound": "Ningún Missions encontrado"
+        "notFound": "Ninguna misión encontrada"
       },
       "delete": {
         "question": "¿Seguro que quiere eliminar Mission {{ id }}?"
       },
       "detail": {
-        "title": "Mission"
+        "title": "Misión"
+      },
+      "category": {
+        "available": "Disponibles",
+        "started": "En progreso",
+        "completed": "Completadas"
       },
       "id": "ID",
-      "name": "Name",
-      "description": "Description",
-      "active": "Active",
-      "levelRequired": "Level Required",
-      "skill": "Skill"
+      "name": "Nombre",
+      "description": "Descripción",
+      "active": "Activa",
+      "levelRequired": "Nivel Requerido",
+      "skill": "Habilidad",
+      "requirement": "Requerimiento"
     }
   },
   "apiApp": {
