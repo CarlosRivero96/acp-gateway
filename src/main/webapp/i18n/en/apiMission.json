@@ -14,12 +14,18 @@
       "detail": {
         "title": "Mission"
       },
+      "category": {
+        "available": "Available",
+        "started": "In progress",
+        "completed": "Completed"
+      },
       "id": "ID",
       "name": "Name",
       "description": "Description",
       "active": "Active",
       "levelRequired": "Level Required",
-      "skill": "Skill"
+      "skill": "Skill",
+      "requirement": "Requirement"
     }
   },
   "apiApp": {

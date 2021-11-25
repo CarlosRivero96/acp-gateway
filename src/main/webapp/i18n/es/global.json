@@ -99,6 +99,7 @@
   },
   "entity": {
     "action": {
+      "actions": "Acciones",
       "addblob": "Añadir fichero",
       "addimage": "Añadir imagen",
       "back": "Volver",
@@ -107,7 +108,10 @@
       "edit": "Editar",
       "open": "Abrir",
       "save": "Guardar",
-      "view": "Vista"
+      "view": "Ver",
+      "startmission": "Empezar",
+      "cancelmission": "Cancelar",
+      "completemission": "Completar"
     },
     "detail": {
       "field": "Campo",
