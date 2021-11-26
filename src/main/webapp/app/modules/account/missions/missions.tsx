@@ -107,7 +107,9 @@ export const Missions = (props: RouteComponentProps<{ url: string }>) => {
                       <td>{mission.name}</td>
                       <td>
                         {mission.skill ? (
-                          <Link to={`/skill/${mission.skill.id}`}>{`${mission.skill.category} - ${mission.skill.name}`}</Link>
+                          <Link to={`/skill/${mission.skill.id}`}>
+                            {mission.skill.category ? `${mission.skill.category} - ${mission.skill.name}` : `${mission.skill.name}`}
+                          </Link>
                         ) : (
                           ''
                         )}
