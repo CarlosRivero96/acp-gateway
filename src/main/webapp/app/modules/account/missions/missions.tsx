@@ -105,7 +105,13 @@ export const Missions = (props: RouteComponentProps<{ url: string }>) => {
                   {availableList.map((mission, i) => (
                     <tr key={`entity-${i}`} data-cy="entityTable">
                       <td>{mission.name}</td>
-                      <td>{mission.skill ? <Link to={`/skill/${mission.skill.id}`}>{mission.skill.name}</Link> : ''}</td>
+                      <td>
+                        {mission.skill ? (
+                          <Link to={`/skill/${mission.skill.id}`}>{`${mission.skill.category} - ${mission.skill.name}`}</Link>
+                        ) : (
+                          ''
+                        )}
+                      </td>
                       <td>{mission.levelRequired}</td>
                       <td>
                         <div className="btn-group flex-btn-group-container">
