@@ -8,10 +8,8 @@ import MissionsDetail from './missions-detail';
 
 const Routes = ({ match }) => (
   <div>
-    <Switch>
-      <ErrorBoundaryRoute exact path={`${match.url}/:id`} component={MissionsDetail} />
-      <ErrorBoundaryRoute path={match.url} component={Missions} />
-    </Switch>
+    <ErrorBoundaryRoute exact path={`${match.url}/:id`} component={MissionsDetail} />
+    <ErrorBoundaryRoute path={match.url} component={Missions} />
   </div>
 );
 

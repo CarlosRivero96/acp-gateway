@@ -141,6 +141,7 @@ export const MissionUpdate = (props: RouteComponentProps<{ id: string }>) => {
                 {skills
                   ? skills.map(otherEntity => (
                       <option value={otherEntity.id} key={otherEntity.id}>
+                        {otherEntity.category ? `${otherEntity.category} - ` : ''}
                         {otherEntity.name}
                       </option>
                     ))
