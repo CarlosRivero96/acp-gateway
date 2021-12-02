@@ -23,6 +23,11 @@ export const getEntities = createAsyncThunk('userSkill/fetch_entity_list', async
   return axios.get<IUserSkill[]>(requestUrl);
 });
 
+export const getCurrentUserSkills = createAsyncThunk('userSkill/fetch_entity_list', async ({ page, size, sort }: IQueryParams) => {
+  const requestUrl = `${apiUrl}/user/?cacheBuster=${new Date().getTime()}`;
+  return axios.get<IUserSkill[]>(requestUrl);
+});
+
 export const getEntity = createAsyncThunk(
   'userSkill/fetch_entity',
   async (id: string | number) => {

@@ -14,6 +14,13 @@
       "detail": {
         "title": "User Skill"
       },
+      "levelDescription": {
+        "1": "Cannot perform",
+        "2": "Can perform with supervision",
+        "3": "Can perform with limited supervision",
+        "4": "Can perform without supervision",
+        "5": "Can teach others"
+      },
       "id": "ID",
       "level": "Level",
       "user": "User",
