@@ -14,6 +14,13 @@
       "detail": {
         "title": "User Skill"
       },
+      "levelDescription": {
+        "1": "No se puede realizar",
+        "2": "Se puede realizar con supervisión",
+        "3": "Se puede realizar con supervisión limitada",
+        "4": "Se puede realizar sin supervisión",
+        "5": "Puede enseñar a otros"
+      },
       "id": "ID",
       "level": "Level",
       "user": "User",

@@ -8,12 +8,14 @@ import Password from './password/password';
 import UserData from './userdata/userdata';
 import UserDataForm from './userdata/userdata-form';
 import Missions from './missions';
+import Skills from './skills';
 
 const Routes = ({ match }) => (
   <div>
     <ErrorBoundaryRoute path={`${match.url}/settings`} component={Settings} />
     <ErrorBoundaryRoute path={`${match.url}/password`} component={Password} />
     <ErrorBoundaryRoute path={`${match.url}/missions`} component={Missions} />
+    <ErrorBoundaryRoute path={`${match.url}/skills`} component={Skills} />
     <Switch>
       <ErrorBoundaryRoute exact path={`${match.url}/userdata`} component={UserData} />
       <ErrorBoundaryRoute exact path={`${match.url}/userdata/edit`} component={UserDataForm} />
