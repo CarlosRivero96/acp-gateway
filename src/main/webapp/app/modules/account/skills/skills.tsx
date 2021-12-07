@@ -36,7 +36,7 @@ export const Skills = (props: RouteComponentProps<{ url: string }>) => {
           </Button>
         </div>
       </h2>
-      <div className="table-responsive">
+      <div className="table-responsive" style={{ textAlign: 'center' }}>
         {userSkillList && userSkillList.length > 0 ? (
           <Table responsive>
             <thead>
@@ -48,19 +48,26 @@ export const Skills = (props: RouteComponentProps<{ url: string }>) => {
                   <Translate contentKey="gatewayApp.apiUserSkill.level">Level</Translate>
                 </th>
                 <th></th>
-                <th>
+                {/* <th>
                   <Translate contentKey="entity.action.actions">Actions</Translate>
-                </th>
-                <th />
+                </th> */}
               </tr>
             </thead>
             <tbody>
               {userSkillList.map((userSkill, i) => (
                 <tr key={`entity-${i}`} data-cy="entityTable">
-                  <td>{userSkill.skill ? <Link to={`skill/${userSkill.skill.id}`}>{userSkill.skill.name}</Link> : ''}</td>
+                  <td>
+                    {userSkill.skill ? (
+                      <Link to={`skill/${userSkill.skill.id}`}>
+                        {userSkill.skill.category.name} - {userSkill.skill.name}
+                      </Link>
+                    ) : (
+                      ''
+                    )}
+                  </td>
                   <td>{userSkill.level}</td>
                   <td>{translate(`gatewayApp.apiUserSkill.levelDescription.${userSkill.level}`)}</td>
-                  <td>
+                  {/* <td>
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`skill/${userSkill.id}`} color="info" size="sm" data-cy="entityDetailsButton">
                         <FontAwesomeIcon icon="eye" />{' '}
@@ -69,7 +76,7 @@ export const Skills = (props: RouteComponentProps<{ url: string }>) => {
                         </span>
                       </Button>
                     </div>
-                  </td>
+                  </td> */}
                 </tr>
               ))}
             </tbody>
