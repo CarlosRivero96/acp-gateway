@@ -64,7 +64,7 @@ export const Skills = (props: RouteComponentProps<{ url: string }>) => {
                   <tr key={`entity-${i}`} data-cy="entityTable">
                     <td>
                       {userSkill.skill ? (
-                        <Link to={`skill/${userSkill.skill.id}`}>
+                        <Link to={`/skill/${userSkill.skill.id}`}>
                           {userSkill.skill.category.name} - {userSkill.skill.name}
                         </Link>
                       ) : (
