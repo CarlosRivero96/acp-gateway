@@ -80,7 +80,9 @@ export const MissionsDetail = (props: RouteComponentProps<{ id: string }>) => {
                   <Translate contentKey="gatewayApp.apiMission.requirement">Requirement</Translate>
                 </span>
               </dt>
-              <dd>{`${missionEntity.skill ? missionEntity.skill.name : ''}: ${missionEntity.levelRequired}`}</dd>
+              <dd>{`${missionEntity.skill ? missionEntity.skill.category.name + ' - ' + missionEntity.skill.name : ''}: ${
+                missionEntity.levelRequired
+              }`}</dd>
               <dt>
                 <span id="description">
                   <Translate contentKey="gatewayApp.apiMission.description">Description</Translate>
