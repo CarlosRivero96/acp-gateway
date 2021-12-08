@@ -3,6 +3,8 @@ import { Link, RouteComponentProps } from 'react-router-dom';
 import { Button, Col, Row, Table } from 'reactstrap';
 import { translate, Translate } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStar as faStarSolid } from '@fortawesome/free-solid-svg-icons';
+import { faStar as faStarOutline } from '@fortawesome/free-regular-svg-icons';
 
 import { getCurrentUserSkills } from 'app/entities/api/user-skill/user-skill.reducer';
 import { IUserSkill } from 'app/shared/model/api/user-skill.model';
@@ -14,6 +16,7 @@ export const Skills = (props: RouteComponentProps<{ url: string }>) => {
 
   const userSkillList = useAppSelector(state => state.userSkill.entities);
   const loading = useAppSelector(state => state.userSkill.loading);
+  const numbers = [1, 2, 3, 4, 5];
 
   useEffect(() => {
     dispatch(getCurrentUserSkills({}));
@@ -36,7 +39,7 @@ export const Skills = (props: RouteComponentProps<{ url: string }>) => {
           </Button>
         </div>
       </h2>
-      <div className="table-responsive" style={{ textAlign: 'center' }}>
+      <div className="table-responsive">
         {userSkillList && userSkillList.length > 0 ? (
           <Table responsive>
             <thead>
@@ -54,20 +57,32 @@ export const Skills = (props: RouteComponentProps<{ url: string }>) => {
               </tr>
             </thead>
             <tbody>
-              {userSkillList.map((userSkill, i) => (
-                <tr key={`entity-${i}`} data-cy="entityTable">
-                  <td>
-                    {userSkill.skill ? (
-                      <Link to={`skill/${userSkill.skill.id}`}>
-                        {userSkill.skill.category.name} - {userSkill.skill.name}
-                      </Link>
-                    ) : (
-                      ''
-                    )}
-                  </td>
-                  <td>{userSkill.level}</td>
-                  <td>{translate(`gatewayApp.apiUserSkill.levelDescription.${userSkill.level}`)}</td>
-                  {/* <td>
+              {userSkillList
+                .slice()
+                .sort((a, b) => (a.skill.category.name > b.skill.category.name ? 1 : -1))
+                .map((userSkill, i) => (
+                  <tr key={`entity-${i}`} data-cy="entityTable">
+                    <td>
+                      {userSkill.skill ? (
+                        <Link to={`skill/${userSkill.skill.id}`}>
+                          {userSkill.skill.category.name} - {userSkill.skill.name}
+                        </Link>
+                      ) : (
+                        ''
+                      )}
+                    </td>
+                    <td>
+                      {/* {userSkill.level} */}
+                      {[1, 2, 3, 4, 5].map(n =>
+                        n <= +userSkill.level ? (
+                          <FontAwesomeIcon key={`levelStar-${n}`} color={'#17a2b8'} icon={faStarSolid} />
+                        ) : (
+                          <FontAwesomeIcon key={`levelStar-${n}`} color={'#17a2b8'} icon={faStarOutline} />
+                        )
+                      )}
+                    </td>
+                    <td>{translate(`gatewayApp.apiUserSkill.levelDescription.${userSkill.level}`)}</td>
+                    {/* <td>
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`skill/${userSkill.id}`} color="info" size="sm" data-cy="entityDetailsButton">
                         <FontAwesomeIcon icon="eye" />{' '}
@@ -77,8 +92,8 @@ export const Skills = (props: RouteComponentProps<{ url: string }>) => {
                       </Button>
                     </div>
                   </td> */}
-                </tr>
-              ))}
+                  </tr>
+                ))}
             </tbody>
           </Table>
         ) : (
