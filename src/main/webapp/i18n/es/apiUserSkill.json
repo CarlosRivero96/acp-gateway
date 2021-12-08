@@ -22,9 +22,9 @@
         "5": "Puede enseñar a otros"
       },
       "id": "ID",
-      "level": "Level",
-      "user": "User",
-      "skill": "Skill"
+      "level": "Nivel",
+      "user": "Usuario",
+      "skill": "Habilidad"
     }
   },
   "apiApp": {
