@@ -166,7 +166,7 @@ export const Missions = (props: RouteComponentProps<{ url: string }>) => {
                   {startedList.map((mission, i) => (
                     <tr key={`entity-${i}`} data-cy="entityTable">
                       <td>{mission.name}</td>
-                      <td>{mission.skill ? <Link to={`skill/${mission.skill.id}`}>{mission.skill.name}</Link> : ''}</td>
+                      <td>{mission.skill.category ? `${mission.skill.category.name} - ${mission.skill.name}` : `${mission.skill.name}`}</td>
                       <td>{mission.levelRequired}</td>
                       <td>
                         <div className="btn-group flex-btn-group-container">
@@ -219,7 +219,7 @@ export const Missions = (props: RouteComponentProps<{ url: string }>) => {
                   {completedList.map((mission, i) => (
                     <tr key={`entity-${i}`} data-cy="entityTable">
                       <td>{mission.name}</td>
-                      <td>{mission.skill ? <Link to={`skill/${mission.skill.id}`}>{mission.skill.name}</Link> : ''}</td>
+                      <td>{mission.skill.category ? `${mission.skill.category.name} - ${mission.skill.name}` : `${mission.skill.name}`}</td>
                       <td>{mission.levelRequired}</td>
                       <td>
                         <div className="btn-group flex-btn-group-container">
