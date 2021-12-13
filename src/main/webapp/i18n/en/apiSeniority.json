@@ -3,6 +3,7 @@
     "apiSeniority": {
       "home": {
         "title": "Seniorities",
+        "managementTitle": "Seniority Management",
         "refreshListLabel": "Refresh list",
         "createLabel": "Create a new Seniority",
         "createOrEditLabel": "Create or edit a Seniority",
