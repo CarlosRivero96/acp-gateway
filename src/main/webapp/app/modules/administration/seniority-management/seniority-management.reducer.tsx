@@ -58,7 +58,7 @@ export const getUserSkills = createAsyncThunk(
 export const updateUserData = createAsyncThunk(
   'seniority-management/update_user',
   async (entity: IUserData, thunkAPI) => {
-    const result = await axios.put<IUserData>(`${apiUrl}/user-data/${entity.id}`, cleanEntity(entity));
+    const result = await axios.patch<IUserData>(`${apiUrl}/user-data/${entity.id}`, cleanEntity(entity));
     thunkAPI.dispatch(getUsers({}));
     return result;
   },
