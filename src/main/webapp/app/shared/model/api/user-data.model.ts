@@ -9,6 +9,7 @@ export interface IUserData {
   email?: string;
   birthdate?: string | null;
   careerProfile?: ICareerProfile | null;
+  seniority?: string;
 }
 
 export const defaultValue: Readonly<IUserData> = {};

@@ -16,8 +16,9 @@
         "title": "Seniority"
       },
       "id": "ID",
-      "name": "Name",
-      "careerProfile": "Career Profile"
+      "name": "Nombre",
+      "careerProfile": "Perfil de Carrera",
+      "meetsRequirements": "Cumple requisitos para"
     }
   },
   "apiApp": {
