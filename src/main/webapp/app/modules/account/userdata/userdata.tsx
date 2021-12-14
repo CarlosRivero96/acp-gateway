@@ -100,7 +100,10 @@ export const UserData = (props: RouteComponentProps<any>) => {
               </dt>
             </Col>
             <Col>
-              <dd>{userDataEntity.careerProfile ? userDataEntity.careerProfile.name : ''}</dd>
+              <dd>
+                {userDataEntity.careerProfile ? userDataEntity.careerProfile.name : ''}
+                {userDataEntity.seniority ? ` - ${userDataEntity.seniority}` : ''}
+              </dd>
             </Col>
           </Row>
         </dl>

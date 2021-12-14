@@ -4,14 +4,18 @@ import { DropdownItem } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NavDropdown } from './menu-components';
 import { Translate, translate } from 'react-jhipster';
+import { faUserTie } from '@fortawesome/free-solid-svg-icons';
 
 const adminMenuItems = (
   <>
-    <MenuItem icon="road" to="/admin/gateway">
-      <Translate contentKey="global.menu.admin.gateway">Gateway</Translate>
-    </MenuItem>
     <MenuItem icon="users" to="/admin/user-management">
       <Translate contentKey="global.menu.admin.userManagement">User management</Translate>
+    </MenuItem>
+    <MenuItem icon={faUserTie} to="/admin/seniority-management">
+      <Translate contentKey="global.menu.admin.seniorityManagement">Seniority management</Translate>
+    </MenuItem>
+    <MenuItem icon="road" to="/admin/gateway">
+      <Translate contentKey="global.menu.admin.gateway">Gateway</Translate>
     </MenuItem>
     <MenuItem icon="tachometer-alt" to="/admin/metrics">
       <Translate contentKey="global.menu.admin.metrics">Metrics</Translate>

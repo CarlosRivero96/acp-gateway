@@ -3,6 +3,7 @@
     "apiSeniority": {
       "home": {
         "title": "Seniorities",
+        "managementTitle": "Seniority Management",
         "refreshListLabel": "Refresh list",
         "createLabel": "Create a new Seniority",
         "createOrEditLabel": "Create or edit a Seniority",
@@ -16,7 +17,8 @@
       },
       "id": "ID",
       "name": "Name",
-      "careerProfile": "Career Profile"
+      "careerProfile": "Career Profile",
+      "meetsRequirements": "Meets requirements for"
     }
   },
   "apiApp": {
