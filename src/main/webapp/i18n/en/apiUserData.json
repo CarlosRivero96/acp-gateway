@@ -21,7 +21,8 @@
       "lastName": "Last Name",
       "email": "Email",
       "birthdate": "Birthdate",
-      "careerProfile": "Career Profile"
+      "careerProfile": "Career Profile",
+      "seniority": "Seniority"
     }
   },
   "apiApp": {

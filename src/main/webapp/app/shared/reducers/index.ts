@@ -32,6 +32,7 @@ import seniorityRequirement from 'app/entities/api/seniority-requirement/seniori
 /* jhipster-needle-add-reducer-import - JHipster will add reducer here */
 
 import missions from 'app/modules/account/missions/missions.reducer';
+import seniorityManagement from 'app/modules/administration/seniority-management/seniority-management.reducer';
 
 const rootReducer = {
   authentication,
@@ -56,6 +57,7 @@ const rootReducer = {
   /* jhipster-needle-add-reducer-combine - JHipster will add reducer here */
   loadingBar,
   missions,
+  seniorityManagement,
 };
 
 export default rootReducer;

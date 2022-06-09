@@ -31,6 +31,7 @@
         "main": "Administration",
         "gateway": "Gateway",
         "userManagement": "User management",
+        "seniorityManagement": "Seniority Management",
         "tracker": "User tracker",
         "metrics": "Metrics",
         "health": "Health",

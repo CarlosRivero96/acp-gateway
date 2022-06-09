@@ -7,7 +7,7 @@
         "createLabel": "Crear nuevo User Data",
         "createOrEditLabel": "Crear o editar User Data",
         "editLabel": "Editar datos de usuario",
-        "notFound": "Ningún User Data encontrado"
+        "notFound": "Ningún usuario encontrado"
       },
       "delete": {
         "question": "¿Seguro que quiere eliminar User Data {{ id }}?"
@@ -21,7 +21,8 @@
       "lastName": "Apellido",
       "email": "Correo Electrónico",
       "birthdate": "Fecha de nacimiento",
-      "careerProfile": "Perfil de carrera"
+      "careerProfile": "Perfil de carrera",
+      "seniority": "Seniority"
     }
   },
   "apiApp": {

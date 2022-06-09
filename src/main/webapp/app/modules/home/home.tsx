@@ -11,6 +11,15 @@ export const Home = () => {
   const account = useAppSelector(state => state.authentication.account);
 
   return (
+    <div>
+      <h2>
+        <Translate contentKey="home.title">Welcome!</Translate>
+      </h2>
+      <p className="lead">
+        <Translate contentKey="home.subtitle">This is your homepage</Translate>
+      </p>
+    </div>
+    /*
     <Row>
       <Col md="3" className="pad">
         <span className="hipster rounded" />
@@ -94,6 +103,7 @@ export const Home = () => {
         </p>
       </Col>
     </Row>
+    */
   );
 };
 
